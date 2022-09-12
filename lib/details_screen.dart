@@ -15,91 +15,86 @@ class DetailsScreen extends StatelessWidget {
           left: 20.0,
           right: 15,
         ),
-        child: Stack(
+        child: Column(
           children: [
+            appBar(context),
+            SizedBox(height: 20),
             Container(
-              child: Column(
-                children: [
-                  appBar(context),
-                  SizedBox(height: 20),
-                  Container(
-                    height: size.width * 0.70,
-                    width: size.width * 0.70,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kSecondaryColor,
-                    ),
-                    child: Container(
-                      margin: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: kSecondaryColor,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/image_1_big.png'),
-                        ),
-                      ),
-                    ),
+              height: size.width * 0.70,
+              width: size.width * 0.70,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: kSecondaryColor,
+              ),
+              child: Container(
+                margin: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: kSecondaryColor,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/image_1_big.png'),
                   ),
-                  SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Vegan salad bowl\n',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: kBlackColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'with red tomato',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
-                                color: kTextColor.withOpacity(0.5),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        '\$20',
+                      TextSpan(
+                        text: 'Vegan salad bowl\n',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: kPrimaryColor,
+                          color: kBlackColor,
                         ),
-                      )
+                      ),
+                      TextSpan(
+                        text: 'with red tomato',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          color: kTextColor.withOpacity(0.5),
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Maecenas ligula tortor, elementum eget nunc eu, bibendum ultricies purus. Vivamus feugiat, nisi vitae euismod rutrum, nisl lectus interdum orci, quis luctus dolor nibh at mauris. Quisque venenatis pulvinar erat, ac cursus quam dignissim a. Fusce sit amet tincidunt urna. Nulla lectus nulla, blandit a consequat id, tempus non ligula. Praesent ullamcorper ante quam, ac lacinia sem bibendum gravida. ',
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: true,
-                      maxLines: 8,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: kTextColor.withOpacity(0.5),
-                      ),
-                    ),
+                ),
+                Text(
+                  '\$20',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
                   ),
-                ],
+                )
+              ],
+            ),
+            SizedBox(height: 20),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Maecenas ligula tortor, elementum eget nunc eu, bibendum ultricies purus. Vivamus feugiat, nisi vitae euismod rutrum, nisl lectus interdum orci, quis luctus dolor nibh at mauris. Quisque venenatis pulvinar erat, ac cursus quam dignissim a. Fusce sit amet tincidunt urna. Nulla lectus nulla, blandit a consequat id, tempus non ligula. Praesent ullamcorper ante quam, ac lacinia sem bibendum gravida. ',
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+                maxLines: 8,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                  color: kTextColor.withOpacity(0.5),
+                ),
               ),
             ),
-            Positioned(
-              bottom: 30,
-              right: 0,
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: size.width * 0.6,
@@ -126,7 +121,6 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 40),
                     height: 80,
                     width: 80,
                     padding: EdgeInsets.all(10),
@@ -170,7 +164,7 @@ class DetailsScreen extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
