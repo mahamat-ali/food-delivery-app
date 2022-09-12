@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_app/constants.dart';
+import 'package:food_app/details_screen.dart';
 
 import 'category_list.dart';
+import 'food_card.dart';
+import 'search_box.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Food Delivery App',
       theme: ThemeData(
         fontFamily: 'Poppins',
+        scaffoldBackgroundColor: kWhiteColor,
       ),
       home: HomeScreen(),
     );
@@ -26,6 +30,26 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: Container(
+        height: 80,
+        width: 80,
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: kPrimaryColor.withOpacity(0.3),
+        ),
+        child: GestureDetector(
+          onTap: () {},
+          child: Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: kPrimaryColor,
+            ),
+            child: SvgPicture.asset('assets/icons/plus.svg'),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 20.0),
         child: Column(
@@ -52,36 +76,39 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ListOfCategories(),
             SizedBox(height: 20),
-            Container(
-              width: size.width * 0.85,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: kTextColor.withOpacity(0.2),
-                ),
-                borderRadius: BorderRadius.circular(20),
-              ),
+            SearchBox(size: size),
+            SizedBox(height: 20),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        'assets/icons/search.svg',
-                        height: 20,
-                      ),
-                    ),
+                  FoodCard(
+                    image: 'assets/images/image_1.png',
+                    price: 20,
+                    title: 'Vegan salad bowl',
+                    ingredient: 'with red tomato',
+                    description:
+                        'Contrary to popular belief, lorem Ipsum is not simply random text. it has',
+                    calorie: 420,
+                    press: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return DetailsScreen();
+                          },
+                        ),
+                      );
+                    },
                   ),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                    ),
+                  FoodCard(
+                    image: 'assets/images/image_2.png',
+                    price: 20,
+                    title: 'Vegan salad bowl',
+                    ingredient: 'with red tomato',
+                    description:
+                        'Contrary to popular belief, lorem Ipsum is not simply random text. it has',
+                    calorie: 420,
                   ),
                 ],
               ),
